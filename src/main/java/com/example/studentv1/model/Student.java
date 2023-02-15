@@ -17,6 +17,7 @@ public class Student {
   private LocalDate bornDate;
   private LocalTime bornTime;
 
+
   public Student (String name) {
     this.name = name;
   }
