@@ -40,7 +40,6 @@ class StudentTest {
     }
   }
 
-
   @Test
   void testStudentByName() {
     assertEquals("Vibbe", studentRepository.findByName("Vibbe").orElse(new Student()).getName());
