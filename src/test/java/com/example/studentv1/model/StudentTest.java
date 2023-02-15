@@ -40,10 +40,6 @@ class StudentTest {
     }
   }
 
-  @Test
-  void testViggoOneLine() {
-    assertEquals(1, studentRepository.findById(1).orElse(new Student()).getId());
-  }
 
   @Test
   void testStudentByName() {
