@@ -12,27 +12,30 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Component
-public class InitData implements CommandLineRunner {
+public class StartAndSave implements CommandLineRunner {
 
-  @Autowired
   StudentRepository studentRepository;
   @Autowired
   TeacherRepository teacherRepository;
 
+  public StartAndSave(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
+  }
+
   @Override
   public void run(String... args) throws Exception {
-    Student s1 = new Student();
-    s1.setId(1);
-    s1.setName("Valdemar");
-    s1.setBornDate(LocalDate.now().minusYears(15));
-    s1.setBornTime(LocalTime.now());
-    studentRepository.save(s1);
-    System.out.println("Saved Student: " + s1.getName());
-    s1.setId(2);
-    s1.setName("Viggo");
-    s1.setBornDate(s1.getBornDate().plusYears(10));
-    studentRepository.save(s1);
-    System.out.println("Saved Student: " + s1.getName());
+    Student std1 = new Student();
+    std1.setName("Anne");
+    std1.setBornDate(LocalDate.now().minusYears(15));
+    std1.setBornTime(LocalTime.now());
+    studentRepository.save(std1);
+    System.out.println("Saved Student: " + std1.getName());
+
+    Student std2 = new Student();
+    std2.setName("Viggo");
+    std2.setBornDate(std1.getBornDate().plusYears(10));
+    studentRepository.save(std2);
+    System.out.println("Saved Student: " + std2.getName());
 
     Teacher t1 = new Teacher();
     t1.setId(1);

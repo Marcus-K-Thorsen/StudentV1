@@ -1,10 +1,13 @@
 package com.example.studentv1.model;
 
 import com.example.studentv1.repositories.StudentRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +17,15 @@ class StudentTest {
 
   @Autowired
   StudentRepository studentRepository;
+
+  @BeforeEach
+  void setUp() {
+    Student std = new Student();
+    std.setName("Vibbe");
+    std.setBornDate(LocalDate.now());
+    std.setBornTime(LocalTime.now());
+    studentRepository.save(std);
+  }
 
   @Test
   void testViggo() {
@@ -34,6 +46,6 @@ class StudentTest {
 
   @Test
   void testStudentByName() {
-    assertEquals("Viggo", studentRepository.findByName("Viggo").orElse(new Student()).getName());
+    assertEquals("Vibbe", studentRepository.findByName("Vibbe").orElse(new Student()).getName());
   }
 }
