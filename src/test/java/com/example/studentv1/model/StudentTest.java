@@ -28,6 +28,7 @@ class StudentTest {
     studentRepository.save(std);
   }
 
+
   @Test
   void testViggo() {
     Optional<Student> std = studentRepository.findById(1);
